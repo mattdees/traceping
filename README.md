@@ -39,12 +39,15 @@ sqlite3 test.sqlite < schema.sqlite
 Edit the $dsn variables in traceping.cgi and traceping_daemon.pl to match your databases.
 
 Install the POE perl module (may exist in OS repos!)
+
 ```
 cpan POE
 ```
 
 License
--
-Licnesed under a BSD license
+--------------
 
-###Development funded by [Rack911](http://rack911.com)
+Licensed under a BSD license
+```
+
+Development funded by [Rack911](http://rack911.com)
