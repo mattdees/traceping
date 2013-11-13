@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="iso-8859-15"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV="Cache-Control" content="no-cache">
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Refresh" CONTENT="<##step##>">
+<TITLE>SmokePing Latency Page for <##title##></TITLE>
+<STYLE type="text/css">
+<!--
+
+.menubar, 
+.menubar a
+{
+    color: white;
+    text-decoration: none;
+}
+
+.menubar {
+    background: #4c4c4c;
+}
+
+.menu,
+.menuitem,
+.menuopen,
+.menuactive
+ {      font-size: 10px;
+        font-family: sans-serif;
+       }
+       
+.menuactive {
+        background: white;
+       }
+
+a.menulink {
+	color: white;
+	}
+
+a.menulinkactive {
+        color: #1280d7;
+        }
+
+	
+a.menulinkactive:hover {
+        color: #000000;
+}
+
+a.menulink:hover       {
+        color: #e0e0ff;
+        }
+
+-->
+</STYLE>
+
+<script src="/smokeping/prototype/prototype.js" type="text/javascript"></script>      
+<script src="/smokeping/scriptaculous/scriptaculous.js?load=builder,effects,dragdrop" type="text/javascript"></script>
+<script src="/smokeping/cropper/cropper.js" type="text/javascript"></script>
+<script src="/smokeping/smokeping-zoom.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+
+<script type="text/javascript">
+//<![CDATA[
+function getURLParameter(name) {
+    return decodeURI(
+        (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
+    );
+}
+
+$(document).ready(function() {
+    var target = getURLParameter('target');
+    if ( target
+      && target.substring(0,1) != '_' // does not begin with a _
+      && target.indexOf('.') != -1  // contains a . in it
+    ) {
+      $('table:eq(0)').find("td:eq(9) div:eq(0)").append('<div id="traceroute"></div>');  // create the div
+      $('#traceroute').load('traceping.cgi?target=' + target);              // replace the div with the traceroute!
+    }
+});
+//]]>
+</script>
+
+
+</HEAD>
+<BODY bgcolor="white">
+<TABLE border="0" cellpadding="10" cellspacing="0">
+<TR>
+  <TD class="menubar" align="left" width="130" valign="top">
+  <P></P>
+  <P><B>SmokePing Targets:</B>&nbsp;&nbsp;</P>
+  <P><##menu##></P>
+  <br/>
+  </td>
+   <TD rowspan="2"></TD>
+   <TD rowspan="2" valign="top">
+      <H1><##title##></H1>
+        <P><##remark##></P>
+        <P><##overview##></P>
+        <P><##body##></P>
+   </TD>
+</TR>
+<tr>
+<td class="menubar" valign="bottom" width="130">
+  <p><small>Maintained by <br/><A href="mailto:<##contact##>"><##owner##></A></small></p>
+  <p><small>Running on <##smokeping##> by <##author##></small></p>
+  <P><##smokelogo##></P>
+  <P></P>
+  <P><##rrdlogo##></P>
+</TD>
+</tr>
+</TABLE>
+</BODY>
+</HTML>

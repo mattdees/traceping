@@ -1,0 +1,5 @@
+CREATE TABLE main.host (
+  host_id INTEGER PRIMARY KEY NOT NULL,
+  target varchar(64),
+  tracert TEXT
+);
