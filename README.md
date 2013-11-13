@@ -20,10 +20,13 @@ chmod 0755 /usr/lib/cgi-bin/traceping.cgi
 Add traceping as a ScriptAlias to apache config (should probably be next to the ScriptAlias for smokeping):
 
 ```
-ScriptAlias /smokeping/traceping.cgi /usr/lib/cgi-bin/traceping.cgi```
+ScriptAlias /smokeping/traceping.cgi /usr/lib/cgi-bin/traceping.cgi
+
+```
 
 
 Copy basehtml.html and overwrite the provided one with the modified version
+
 
 ```
 cp /etc/smokeping/basehtml.html /etc/smokeping/basehtml.html.bak
