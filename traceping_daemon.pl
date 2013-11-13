@@ -139,8 +139,23 @@ sub _load_targets {
 
 			# set target to Group.Name, like in the UI
 			my $target = "${group}.${server}";
-			my $host = $group_hr->{$server}->{host};
-			push @targets, { 'target' => $target, 'host' => $host };
+
+			if ( !exists $group_hr->{$server}->{'host'} ) {
+				# this is actually just another level deeper of config
+				# This is for entries that are +++ headed, if we need another level, we'll make this recursive
+				foreach my $third_level ( keys %{ $group_hr->{$server} } ) {
+					next if ref $group_hr->{$server}->{$third_level} ne 'HASH';
+					next if !exists $group_hr->{$server}->{$third_level}->{'host'};
+					my $host = $group_hr->{$server}->{$third_level}->{'host'};
+					push @targets, { 'target' => "${target}.${third_level}", 'host' => $host };
+				} 
+			}
+			else {
+				my $host = $group_hr->{$server}->{host};
+				push @targets, { 'target' => $target, 'host' => $host };
+			}
+
+
 		}
 	}
 	return @targets;
