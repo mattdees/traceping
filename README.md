@@ -44,7 +44,9 @@ Edit the $dsn variables in traceping.cgi and traceping_daemon.pl to match your d
 Install the POE perl module (may exist in OS repos!)
 
 ```
-cpan POE
+most distros: cpan POE DBI DBD::SQLite
+
+ubuntu/debian: sudo apt-get install libdbi-perl libpoe-perl libdbd-sqlite3-perl libpoe-perl
 ```
 
 License
