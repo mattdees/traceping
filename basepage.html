@@ -73,8 +73,9 @@ $(document).ready(function() {
       && target.substring(0,1) != '_' // does not begin with a _
       && target.indexOf('.') != -1  // contains a . in it
     ) {
-      $('table:eq(0)').find("td:eq(9) div:eq(0)").append('<div id="traceroute"></div>');  // create the div
-      $('#traceroute').load('traceping.cgi?target=' + target);              // replace the div with the traceroute!
+      var traceroute_container = $('<div></div>');
+      $('div img:eq(0)').parent().parent().append(traceroute_container);
+      traceroute_container.load('traceping.cgi?target=' + target);
     }
 });
 //]]>
